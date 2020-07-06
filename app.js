@@ -8,8 +8,8 @@ const orderRouter = require('./routers/order-router')(connection);
 const app = express();
 const PORT = process.env.PORT || 3030;
 
-
 app.use(cors());
+  
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 app.use('/api', pizzaRouter);
