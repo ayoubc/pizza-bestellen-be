@@ -3,6 +3,7 @@ const cors = require('cors');
 const connection = require('./connection');
 const bodyParser = require('body-parser');
 const pizzaRouter = require('./routers/pizza-router')(connection);
+const orderRouter = require('./routers/order-router')(connection);
 
 const app = express();
 const PORT = process.env.PORT || 3030;
@@ -12,6 +13,7 @@ app.use(cors());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 app.use('/api', pizzaRouter);
+app.use('/api', orderRouter);
 
 app.get('/', (req, res) => {
     return res.json({ version: "1.0.0" });
